@@ -13,7 +13,9 @@ class Student extends BaseController {
             studentHTML +=
             `<tr>
                 <td class="text-center"> ${index + 1} </td>
-                <td class="text-center"> ${item.name} </td>
+                <td class="text-center">
+                    <a href="/student/detail?id=${item.id}">${item.name}</a>
+                </td>
                 <td class="text-center"> ${item.class} </td>
                 <td class="text-center"> ${item.assess} </td>
                 <td>
@@ -97,6 +99,23 @@ class Student extends BaseController {
             });
         }
 
+    }
+
+    static detail = async (req, res) => {
+        let id = qs.parse(url.parse(req.url).query).id;
+        let student = (await StudentModel.getStudentByID(id))[0];
+        let dataHTML = await this.readFile('./view/detail.html');
+        dataHTML = dataHTML.replace('<nav></nav>', navbar);
+        dataHTML = dataHTML.replace('valueName', student.name);
+        dataHTML = dataHTML.replace('valuename', student.name);
+        dataHTML = dataHTML.replace('valueClass', student.class);
+        dataHTML = dataHTML.replace('valueScorePractice', student.scorePractice);
+        dataHTML = dataHTML.replace('valueScoreTheory', student.scoreTheory);
+        dataHTML = dataHTML.replace('valueAssess', student.assess);
+        dataHTML = dataHTML.replace('valueDescription', student.description);
+        res.writeHead(200, 'Content-Type', 'text/html');
+        res.write(dataHTML);
+        res.end();
     }
 
 }
