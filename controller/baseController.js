@@ -10,7 +10,7 @@ class baseController {
             })
         })
     }
-    
+
     static parsePath(path) {
         let controllers = ['student'];
         let controller = controllers.filter(item => {
@@ -19,7 +19,7 @@ class baseController {
         if (controller) {
             let action = controller.length == path.length ? 'view' : path.replace(`${controller}/`, '');
         return {'controller': controller, 'action': action};
-        } else return {'controller': 'notFound', 'action': 'view'};
+        } else return {'controller': 'student', 'action': 'view'};
     }
 }
 

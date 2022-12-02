@@ -10,10 +10,7 @@ const server = http.createServer(async (req, res) => {
   let parseUrl = url.parse(req.url, true);
   let path = parseUrl.pathname;
   let trimPath = path.replace(/^\/+|\/$/g, '');
-  console.log(trimPath);
   let { controller, action } = BaseController.parsePath(trimPath);
-  console.log('controller: ' + controller);
-  console.log('action: ' + action);
   let handler = Router[controller][action];
   // console.log(BaseController.parsePath(trimPath));
   try { handler(req, res) } catch (err) { Router.notFound.view(req, res) };

@@ -2,7 +2,6 @@ const BaseController = require('./baseController.js');
 const StudentModel = require('../model/studentModel.js');
 const qs = require('qs');
 const url = require('url');
-const navbar = require('../view/navbar.js');
 
 class Student extends BaseController {
     static view = async (req, res, status) => {
@@ -34,7 +33,6 @@ class Student extends BaseController {
         });
         res.writeHead(200, 'Content-Type', 'text/html');
         dataHTML = dataHTML.replace('<tbody></tbody>', studentHTML);
-        dataHTML = dataHTML.replace('<nav></nav>', navbar);
         res.write(dataHTML);
         res.end();
     }
@@ -50,7 +48,6 @@ class Student extends BaseController {
     static add = async (req, res) => {
         if (req.method == "GET") {
             let dataHTML = await this.readFile('./view/add.html');
-            dataHTML = dataHTML.replace('<nav></nav>', navbar);
             res.write(dataHTML);
             res.end();
         }
@@ -74,7 +71,6 @@ class Student extends BaseController {
         if (req.method == "GET") {
             let student = (await StudentModel.getStudentByID(id))[0];
             let dataHTML = await this.readFile('./view/edit.html');
-            dataHTML = dataHTML.replace('<nav></nav>', navbar);
             dataHTML = dataHTML.replace('valueName', `value="${student.name}"`);
             dataHTML = dataHTML.replace(`value="${student.class}"`, `value="${student.class}" selected`);
             dataHTML = dataHTML.replace('valueScorePractice', `value="${student.scorePractice}"`);
@@ -105,7 +101,6 @@ class Student extends BaseController {
         let id = qs.parse(url.parse(req.url).query).id;
         let student = (await StudentModel.getStudentByID(id))[0];
         let dataHTML = await this.readFile('./view/detail.html');
-        dataHTML = dataHTML.replace('<nav></nav>', navbar);
         dataHTML = dataHTML.replace('valueName', student.name);
         dataHTML = dataHTML.replace('valuename', student.name);
         dataHTML = dataHTML.replace('valueClass', student.class);
@@ -113,6 +108,8 @@ class Student extends BaseController {
         dataHTML = dataHTML.replace('valueScoreTheory', student.scoreTheory);
         dataHTML = dataHTML.replace('valueAssess', student.assess);
         dataHTML = dataHTML.replace('valueDescription', student.description);
+        dataHTML = dataHTML.replace('student/edit',`student/edit?id=${id}`);
+        dataHTML = dataHTML.replace('student/delete',`student/delete?id=${id}`);
         res.writeHead(200, 'Content-Type', 'text/html');
         res.write(dataHTML);
         res.end();
