@@ -36,24 +36,16 @@
                             <th class="border-0 text-center">Age</th>
                             <th class="border-0 text-center">Salary</th>
                             <th class="border-0 text-center">
-                                <select id="branch" name="branch" class="form-control">
-                                    <option value="" hidden>Branch</option>
+                                <div class="dropdown-menu">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        Branch
+                                      </button>
                                     <% branches.forEach(item=> { %>
-                                        <option value="<%- item.name %>">
-                                            <a href="/employee/item.name">
-                                                <%- item.name %>
-                                            </a>
-                                        </option>
-                                        <% }) %>
-                                </select>
-                            </th>
-
-                            <th class="dropdown-menu">
-                                <% branches.forEach(item=> { %>
                                     <a class="dropdown-item" href="/employee/<%- item.name %>">
-                                        <% item.name %>
+                                        <%- item.name %>
                                     </a>
                                     <% }) %>
+                                </div>
                             </th>
 
                             <th class="border-0 text-center"></th>
