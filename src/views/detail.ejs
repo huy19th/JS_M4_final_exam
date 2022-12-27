@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Add Room</title>
+  <title>Employee Info</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,69 +20,51 @@
       <div class="col-6 shadow-lg p-3 mb-5 bg-white rounded">
         <div class="d-flex bd-highlight mb-3">
           <div class="mr-auto p-2 bd-highlight">
-            <h2>Thêm học viên</h2>
+            <h2>Employee Info</h2>
           </div>
         </div>
-        <form method="post">
-        <table class="table table-borderless">
+        <table class="table  table-borderless">
           <tr>
-            <th>Tên:</th>
+            <th>Employee Code:</th>
             <td>
-              <input type="text" name="name" required>
+              <%- employee.code %>
             </td>
           </tr>
           <tr>
-            <th>Lớp:</th>
+            <th>Name:</th>
             <td>
-              <select name="class">
-                <option value="C0622">C0622</option>
-                <option value="C0722">C0722</option>
-                <option value="C0822">C0822</option>
-              </select>
+              <%- employee.name %>
             </td>
           </tr>
           <tr>
-            <th>Điểm thực hành:</th>
+            <th>Salary:</th>
             <td>
-              <input type="number" min="0" max="10" name="scorePractice">
+              <%- employee.salary %>
             </td>
           </tr>
           <tr>
-            <th>Điểm lý thuyết:</th>
+            <th>Age:</th>
             <td>
-              <input type="number" min="0" max="10" name="scoreTheory">
+              <%- employee.age %>
             </td>
           </tr>
           <tr>
-            <th>Đánh giá:</th>
+            <th>Branch:</th>
             <td>
-              <select name="assess">
-                <option value="Đạt">Đạt</option>
-                <option value="Không Đạt">Không Đạt</option>
-              </select>
+              <%- employee.branch %>
             </td>
           </tr>
           <tr>
-            <th>Mô tả</th>
             <td>
-              <textarea cols="50" rows="4" name="description"></textarea>
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <a>
-                <button type="submit" class="btn btn-primary">Lưu</button>
-              </a>
-              <a href="/student">
-                <button type="button" class="btn btn-secondary">Thoát</button>
-              </a>
+              <a href="/employee">Back to list</a>
             </td>
           </tr>
         </table>
-        </form>
+        </div>
       </div>
     </div>
+  </div>
+  </div>
   </div>
 </body>
 <!-- Optional JavaScript -->

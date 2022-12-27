@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Student Info</title>
+  <title>Add Employee</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,68 +20,46 @@
       <div class="col-6 shadow-lg p-3 mb-5 bg-white rounded">
         <div class="d-flex bd-highlight mb-3">
           <div class="mr-auto p-2 bd-highlight">
-            <h2>Học viên valueName</h2>
-          </div>
-          <div class="p-2 bd-highlight">
-            <a href="/student">
-              <button type="button" class="btn btn-primary">Danh sách học viên</button>
-            </a>
+            <h2>Add Employee</h2>
           </div>
         </div>
-        <table class="table  table-borderless">
-          <tr>
-            <th>Tên:</th>
-            <td>
-              valuename
-            </td>
-          </tr>
-          <tr>
-            <th>Lớp:</th>
-            <td>
-              valueClass
-            </td>
-          </tr>
-          <tr>
-            <th>Điểm thực hành:</th>
-            <td>
-              valueScorePractice
-            </td>
-          </tr>
-          <tr>
-            <th>Điểm lý thuyết:</th>
-            <td>
-              valueScoreTheory
-            </td>
-          </tr>
-          <tr>
-            <th>Đánh giá:</th>
-            <td>
-              valueAssess
-            </td>
-          </tr>
-          <tr>
-            <th>Mô tả</th>
-            <td>
-              valueDescription
-            </td>
-          </tr>
-        </table>
-        <div class="d-flex bd-highlight mb-3">
-          <div class="mr-auto p-2 bd-highlight">
+        <form method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="code">Employee Code</th>
+              <input type="text" id="code" name="code" class="form-control">
           </div>
-          <div class="p-2 bd-highlight">
-            <a href="/student/edit">
-              <button type="button" class="btn btn-secondary">Chỉnh sửa</button>
+          <div class="form-group">
+            <label for="name">Name</th>
+              <input type="text" id="name" name="name" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="age">Age</th>
+              <input type="text" id="age" name="age" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="salary">salary</th>
+              <input type="text" id="salary" name="salary" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="branch">Branch</th>
+              <select id="branch" name="branch" class="form-control">
+                <% branches.forEach(item=> { %>
+                  <option value="<%- item.name %>"><%- item.name %></option>
+                  <% }) %>
+              </select>
+          </div>
+          <div class="form-group">
+            <a>
+              <button type="submit" class="btn btn-primary">Save</button>
             </a>
-            <a href="/student/delete" onclick="return confirm('Are you sure ?')">
-              <button type="button" class="btn btn-danger">Xóa</button>
+            <a href="/employee">
+              <button type="button" class="btn btn-secondary">Cancel</button>
             </a>
           </div>
-        </div>
+
+        </form>
       </div>
     </div>
-  </div>
-  </div>
   </div>
 </body>
 <!-- Optional JavaScript -->
